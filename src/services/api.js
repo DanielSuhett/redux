@@ -4,4 +4,8 @@ const apiLocal = axios.create({
   baseURL: "http://localhost:3001"
 });
 
-export { apiLocal };
+const apiProduction = axios.create({
+  baseURL: "https://afferoexpress.herokuapp.com"
+});
+
+export { apiLocal, apiProduction };

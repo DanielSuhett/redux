@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import { Types as Product } from "../reducers/Product";
-import { apiLocal } from "../../services/api";
+import { apiProduction } from "../../services/api";
 import * as productActions from "../actions/Product";
 import { createStandaloneToast } from "@chakra-ui/react";
 
@@ -14,7 +14,7 @@ function* getProducts() {
       url: "/products"
     };
 
-    const products = yield call(apiLocal, options);
+    const products = yield call(apiProduction, options);
 
     yield put(productActions.productLoading(false));
 
@@ -46,7 +46,7 @@ function* createProduct(action) {
       data: action.payload
     };
 
-    yield call(apiLocal, options);
+    yield call(apiProduction, options);
 
     yield put(productActions.productLoading(false));
 
@@ -86,7 +86,7 @@ function* updateProduct(action) {
       data: action.payload
     };
 
-    yield call(apiLocal, options);
+    yield call(apiProduction, options);
 
     yield put(productActions.productLoading(false));
 
@@ -126,7 +126,7 @@ function* deleteProduct(action) {
       url: `/${action.payload.id}`
     };
 
-    yield call(apiLocal, options);
+    yield call(apiProduction, options);
 
     yield put(productActions.productLoading(false));
 
